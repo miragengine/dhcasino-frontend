@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const flips = {}
   let currentUser = null
 
-  fetch("https://dhcasino.fly.dev/check_session")
+  fetch("https://0853-31-32-166-161.ngrok-free.app/check_session")
     .then(res => res.json())
     .then(user => {
       if (user.logged_in) {
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     socket.on("balance_update", (data) => {
-      fetch("https://dhcasino.fly.dev/check_session")
+      fetch("https://0853-31-32-166-161.ngrok-free.app/check_session")
           .then(res => res.json())
           .then(user => {
             if (user.logged_in && user.username === data.username) {
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const side = document.getElementById("flip-side").value
     const amount = parseFloat(document.getElementById("flip-amount").value)
     if (isNaN(amount) || amount <= 0) return
-    const res = await fetch("https://dhcasino.fly.dev/host-flip", {
+    const res = await fetch("https://0853-31-32-166-161.ngrok-free.app/host-flip", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ side, amount })

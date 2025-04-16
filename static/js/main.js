@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const username = document.getElementById("login-username").value.trim();
       const password = document.getElementById("login-password").value.trim();
 
-      fetch("https://dhcasino.fly.dev/login", {
+      fetch("https://0853-31-32-166-161.ngrok-free.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const logout_btn = document.getElementById("logout-btn");
   if (logout_btn) {
     logout_btn.addEventListener("click", function() {
-      fetch("https://dhcasino.fly.dev/logout", { method: "POST" })
+      fetch("https://0853-31-32-166-161.ngrok-free.app/logout", { method: "POST" })
         .then(res => res.json())
         .then(() => {
           update_ui(false, "");
@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   window.onload = function() {
-    fetch("https://dhcasino.fly.dev/check_session")
+    fetch("https://0853-31-32-166-161.ngrok-free.app/check_session")
       .then(res => res.json())
       .then(data => {
         if (data.logged_in) {
@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   function fetch_bal() {
-    fetch("https://dhcasino.fly.dev/balance")
+    fetch("https://0853-31-32-166-161.ngrok-free.app/balance")
       .then(response => response.json())
       .then(data => {
         if (data.error || data.balance_usd === undefined) {

@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function update_balance() {
-    fetch("https://dhcasino.fly.dev/balance")
+    fetch("https://0853-31-32-166-161.ngrok-free.app/balance")
       .then(res => res.json())
       .then(b => {
         currentBalance = b.balance_usd;
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     coin.style.transition = "transform 0s";
     coin.style.transform = "rotateX(0deg)";
     let spinRounds = 6;
-    fetch("https://dhcasino.fly.dev/play-coinflip", {
+    fetch("https://0853-31-32-166-161.ngrok-free.app/play-coinflip", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ choice: user_choice, amount: display_amount_usd })
@@ -400,7 +400,7 @@ if (match_id) {
     }, 200);
   });
 
-  fetch(`https://dhcasino.fly.dev/api/flip/${match_id}`)
+  fetch(`https://0853-31-32-166-161.ngrok-free.app/api/flip/${match_id}`)
   .then(res => res.json())
   .then(data => {
     if (data.state === "countdown" && data.result && data.start_time) {
@@ -457,7 +457,7 @@ if (match_id) {
       document.body.appendChild(wait_box);
     }
 
-    fetch("https://dhcasino.fly.dev/check_session")
+    fetch("https://0853-31-32-166-161.ngrok-free.app/check_session")
       .then(r => r.json())
       .then(session => {
         if (!session.logged_in) return;
