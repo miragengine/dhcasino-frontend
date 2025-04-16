@@ -30,15 +30,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     function reloadAdminPanel() {
-        fetchAndRender("https://0853-31-32-166-161.ngrok-free.app/admin/api/connected", connectedTable, ["Username"], (name) =>
+        fetchAndRender("https://3af6-31-32-166-161.ngrok-free.app/admin/api/connected", connectedTable, ["Username"], (name) =>
             `<tr><td>${name}</td></tr>`
         );
 
-        fetchAndRender("https://0853-31-32-166-161.ngrok-free.app/admin/api/active-players", playingTable, ["Username"], (name) =>
+        fetchAndRender("https://3af6-31-32-166-161.ngrok-free.app/admin/api/active-players", playingTable, ["Username"], (name) =>
             `<tr><td>${name}</td></tr>`
         );
 
-        fetch("https://0853-31-32-166-161.ngrok-free.app/admin/api/logs")
+        fetch("https://3af6-31-32-166-161.ngrok-free.app/admin/api/logs")
             .then(res => res.json())
             .then(data => {
                 if (!logsTable) return;
@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 logsTable.innerHTML = html;
             });
 
-            fetch("https://0853-31-32-166-161.ngrok-free.app/admin/api/users")
+            fetch("https://3af6-31-32-166-161.ngrok-free.app/admin/api/users")
             .then(res => res.json())
             .then(users => {
-                fetch("https://0853-31-32-166-161.ngrok-free.app/admin/api/logs")
+                fetch("https://3af6-31-32-166-161.ngrok-free.app/admin/api/logs")
                     .then(res => res.json())
                     .then(logs => {
                         const wins = {};
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             playerInfo.innerHTML = "";
             return;
         }
-        const res = await fetch(`https://0853-31-32-166-161.ngrok-free.app/admin/api/player/${username}`);
+        const res = await fetch(`https://3af6-31-32-166-161.ngrok-free.app/admin/api/player/${username}`);
         const data = await res.json();
         if (data.error) {
             playerInfo.innerHTML = `<p style="color:red;">${data.error}</p>`;
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const amount = parseFloat(input.value.trim());
             if (!username || isNaN(amount)) return;
     
-            const res = await fetch("https://0853-31-32-166-161.ngrok-free.app/admin/api/change-balance", {
+            const res = await fetch("https://3af6-31-32-166-161.ngrok-free.app/admin/api/change-balance", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, amount })
