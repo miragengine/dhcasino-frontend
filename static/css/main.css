@@ -1,0 +1,12 @@
+h1 {
+    font-size: 1.2em;
+    color: var(--color-white);
+    margin: 0;
+}
+h2 {
+    color: var(--color-white);
+}
+p {
+    font-size: 0.9em;
+    color: var(--color-white);
+}

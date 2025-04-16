@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex; flex-direction: column; margin: 0; padding: 0;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Da Hood Casino - Flip Coins & Win USD</title>
+    <meta name="description" content="Play coinflip, win cash! Da Hood Casino offers fast crypto gambling with USD payouts. No deposit required to start." />
+    <meta name="keywords" content="Da Hood Casino, Coinflip, Gambling, Crypto Casino, Online Betting" />
+    <meta name="author" content="Da Hood Casino Team" />
+  
+    <meta property="og:title" content="Da Hood Casino - Flip Coins & Win USD" />
+    <meta property="og:description" content="Gamble USD in a fast-paced coinflip game. Play now and double your balance!" />
+    <meta property="og:image" content="https://dhcasino.vercel.app/static/assets/banner.png" />
+    <meta property="og:url" content="https://dhcasino.vercel.app/" />
+    <meta property="og:type" content="website" />
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Da Hood Casino - Flip Coins & Win USD" />
+    <meta name="twitter:description" content="Play & win USD instantly with our provably fair coinflip game." />
+    <meta name="twitter:image" content="https://dhcasino.vercel.app/static/assets/banner.png" />
+  
+    <meta name="theme-color" content="#080808" />
+    <link rel="icon" href="/static/assets/favicon.ico" />
+  
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/animations.css" />
+    <link rel="stylesheet" href="/static/css/wallet.css" />
+    <link rel="stylesheet" href="/static/css/loader.css" />
+    <link rel="stylesheet" href="/static/css/casino-games.css" />
+    <link rel="stylesheet" href="/static/css/sidebar.css" />
+    <link rel="stylesheet" href="/static/css/auth.css" />
+    <link rel="stylesheet" href="/static/css/overlay.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+    <script src="/static/js/main.js" defer></script>
+  </head>  
+  <body style="height: 100%; display: flex; flex-direction: column; margin: 0; padding: 0;">
+    <div id="page-loader">
+      <div class="loader-spinner"></div>
+    </div>
+    <header class="slide-in delay-1">
+      <div class="header-container">
+        <a href="/">
+          <img src="/static/assets/favicon.ico" alt="logo" class="logo-header">
+        </a>
+        <div id="header-section" style="display: none;">
+          <div class="header-buttons">
+            <button class="balance-button">
+              <img src="/static/assets/usd.svg" alt="usd" class="balance-icon">
+              <p id="usd_balance"></p>
+              <img src="/static/assets/chevron.svg" alt="arrow" class="chevron-icon">
+            </button>
+            <button class="wallet-button">
+              <img src="/static/assets/wallet.svg" alt="wallet"> Wallet </button>
+          </div>
+        </div>
+        <div class="loader-buttons">
+          <button class="login-button">Login</button>
+          <div id="user-info" style="display: none; align-items: center; gap: 0.5rem;">
+            <img id="discord-avatar" src="" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+            <span id="discord-name" style="color: white; font-weight: 500;"></span>
+            <button id="logout-btn" class="register-button">Logout</button>
+          </div>          
+        </div>
+      </div>
+    </header>
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <button class="menu-toggle">
+          <img src="/static/assets/menu.svg" alt="Menu">
+        </button>
+      </div>
+      <a href="/" class="sidebar-svg">
+        <img src="/static/assets/home.svg" alt="Menu Icon">
+      </a>
+      <hr class="sidebar-separator">
+      <a href="/coin-flip" class="sidebar-svg">
+        <img src="/static/assets/coinflip.png" alt="Coin Flip Icon">
+      </a>
+    </div>
+    <div id="login-overlay" class="overlay">
+      <div class="auth-container">
+        <h2>Login</h2>
+        <p style="color: white; margin-bottom: 1rem;">You will be redirected to Discord to log in.</p>
+        <a href="/discord-login" class="auth-button" style="text-align: center;">Login with Discord</a>
+      </div>
+    </div>    
+    <div id="wallet-overlay" class="overlay">
+      <div class="wallet-container">
+        <div class="wallet-switcher slide-in delay-1">
+          <button id="deposit-tab" class="wallet-tab active">Deposit</button>
+          <button id="withdraw-tab" class="wallet-tab">Withdraw</button>
+        </div>
+        <div id="wallet-deposit" class="wallet-tab-content" style="display: block;">
+          <h1>Deposit Money</h1>
+          <hr>
+          <p>To deposit money, go to our Discord server, head over to the <strong>#deposit</strong> channel and open a ticket. We will answer quickly. </p>
+        </div>
+        <div id="wallet-withdraw" class="wallet-tab-content" style="display: none;">
+          <h1>Withdraw Money</h1>
+          <hr>
+          <p>To withdraw money, go to our Discord server, head over to the <strong>#withdraw</strong> channel and open a ticket. We will assist you shortly. </p>
+        </div>
+      </div>
+    </div>
+    <div id="casino-games-section" class="casino-games slide-in delay-3" style="display: none;">
+      <div class="casino-games-header">
+        <svg class="game-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+          <g clip-path="url(#clip0_2754_92380)">
+            <path d="M4.26672 1H5.20006C6.74628 1 8.00006 2.72045 8.00006 4.26667V4.73334" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4.09998 7.19995V9.69995" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2.86719 8.4668H5.36719" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.0006 9.86668V7.53334C15.0006 6.79074 14.7056 6.07854 14.1805 5.55344C13.6554 5.02834 12.9432 4.73334 12.2006 4.73334H3.80062C3.05802 4.73334 2.34582 5.02834 1.82072 5.55344C1.29562 6.07854 1.00062 6.79074 1.00062 7.53334V12.8982C0.989515 13.3526 1.12808 13.7981 1.39499 14.1661C1.66189 14.5341 2.04234 14.8041 2.47778 14.9347C2.93191 15.0543 3.41371 15.0096 3.83807 14.8084C4.26242 14.6072 4.602 14.2625 4.7968 13.8352L6.17627 11.2667H9.82499L11.1659 13.75C11.2984 14.0598 11.5044 14.3326 11.766 14.545C12.0276 14.7574 12.3369 14.9029 12.6673 14.9689C12.9532 15.019 13.2467 15.0059 13.527 14.9307C13.8074 14.8554 14.0679 14.7197 14.2903 14.5332C14.5127 14.3466 14.6917 14.1137 14.8146 13.8507C14.9375 13.5877 15.0014 13.3011 15.0019 13.0108L15.0006 9.86668Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="11" cy="9" r="1" fill="currentColor" />
+            <circle cx="12.55" cy="6.94995" r="0.75" fill="currentColor" />
+          </g>
+          <defs>
+            <clipPath id="clip0_2754_92380">
+              <rect width="16" height="16" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+        <h2>DHCasino Games</h2>
+      </div>
+      <div class="casino-game-card">
+        <a href="/host">
+          <img src="/static/assets/cf2.png" alt="coinflip">
+        </a>
+      </div>
+    </div>
+    <footer class="main-footer slide-in delay-4">
+      <div class="footer-columns">
+        <div class="footer-section">
+          <h4>Casino</h4>
+          <ul>
+            <li><a href="/coin-flip">Coin Flip</a></li>
+            <li><a href="#">Roulette</a></li>
+            <li><a href="#">Crash</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Help Center</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+    
+      <div class="footer-info">
+        <img src="/static/assets/favicon.ico" alt="DHCasino Logo" class="footer-logo">
+    
+        <p class="footer-description">
+          DHCasino is owned and operated by Natural Nine B.V., Curaçao company registration number 160998, with its registered address at Korporaalweg 10, Willemstad, Curaçao and is licensed by the Curaçao Gaming Control Board to offer games of chance under license number OGL/2024/1337/0628. DHCasino’s payment agent company is River Card Limited, Cyprus company registration number HE 431566, with its registered address at 50 Spyrou Kyprianou Avenue, Irida Tower 3, Floor 6, 6057 Larnaca, Cyprus. Contact us at support@dhcasino.com.
+        </p>
+      </div>
+    
+      <hr class="footer-separator">
+    
+      <div class="footer-bottom">
+        © 2025 DHCasino.com | All Rights Reserved
+      </div>
+    </footer>     
+  </body>
+</html>

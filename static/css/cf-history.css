@@ -1,0 +1,86 @@
+.coinflip-history {
+    max-width: 1150px;
+    margin: 0 auto 60px;
+    background-color: var(--color-gray900);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--color-gray700);
+}
+.coinflip-history h2 {
+    color: var(--color-white);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.history-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+.history-table {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    text-align: left;
+}
+.history-table thead th {
+    color: var(--color-gray400);
+    font-size: 0.85rem;
+    font-weight: 300;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-gray700);
+}
+.history-table tbody tr {
+    background-color: var(--color-gray800);
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+.history-table td {
+    color: var(--color-gray300);
+    padding: 14px 16px;
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+.history-table .win td:last-child {
+    color: #2ecc71;
+}
+.history-table td:nth-child(1), .history-table td:nth-child(2) {
+    color: var(--color-white);
+}
+.history-table tbody tr:nth-child(odd) {
+    background-color: var(--color-gray800);
+}
+.history-table tbody tr:nth-child(even) {
+    background-color: var(--color-gray900);
+}
+.history-table tbody tr:hover {
+    background-color: var(--color-gray700) !important;
+}
+
+@media (max-width: 768px) {
+    .coinflip-history {
+      padding: 20px 12px;
+      margin: 0 10px 40px;
+      border-radius: 10px;
+    }
+  
+    .coinflip-history h2 {
+      font-size: 1rem;
+    }
+  
+    .history-table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  
+    .history-table {
+      min-width: 600px;
+      font-size: 0.8rem;
+    }
+  
+    .history-table thead th,
+    .history-table td {
+      padding: 8px 10px;
+      font-size: 0.8rem;
+    }
+  }
+  

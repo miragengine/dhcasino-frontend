@@ -1,0 +1,95 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 65px;
+    height: 100vh;
+    background-color: var(--color-gray900);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: width 0.3s ease-in-out;
+    z-index: 1001;
+    border-right: 1px solid var(--color-gray700);
+}
+.sidebar-top {
+    width: 100%;
+    padding: 1.275rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--color-gray700);
+}
+.sidebar-svg {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+.sidebar-svg img {
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(58%) sepia(6%) saturate(612%) hue-rotate(169deg) brightness(93%) contrast(90%);
+    transition: all 0.3s;
+}
+.sidebar-svg img:hover {
+    filter: brightness(0) saturate(100%) invert(58%) sepia(6%) saturate(612%) hue-rotate(169deg) brightness(110%) contrast(100%);
+}
+.sidebar-svg img:active {
+    transform: scale(0.90);
+}
+.sidebar-separator {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: #747C87;
+    margin: 10px auto;
+    opacity: 0.3;
+}
+@media (max-width: 1400px) {
+    .sidebar {
+        display: none;
+   }
+}
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 0;
+}
+.menu-toggle img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(75%);
+    transition: all 0.3s;
+}
+.menu-toggle img:hover {
+    filter: brightness(100%);
+}
+.menu-toggle img:active {
+    transform: scale(0.90);
+}
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.sidebar-menu li {
+    width: 100%;
+    text-align: center;
+}
+.sidebar-menu img {
+    width: 30px;
+    height: 30px;
+    transition: filter 0.3s;
+}
+.sidebar-menu img:hover {
+    filter: brightness(1);
+}
